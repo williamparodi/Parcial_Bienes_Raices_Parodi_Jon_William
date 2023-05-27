@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienes Raices</title>
+</head>
+<body>
+    <header>
+        <div class="logo"></div> <!--aca agregar la clase logo-->
+        <h1>Completa el formulario</h1>
+    </header>
+    <main>
+        <section class="formulario">
+            <fieldset>
+                <legend>Datos del anuncio</legend>
+                <p>
+                    <p>Titulo:</p>
+                    <input type="text" name="txtTitulo" placeholder="Título" autocomplete="off">
+                </p>
+                <fieldset>
+                    <legend>Transacción</legend>
+                    <p>VENTA</p>
+                    <input type="radio" name="rdoTransaccion" value="Venta">
+                    <p>ALQUILER</p>
+                    <input type="radio" name="rdoTransaccion" value="Alquiler">
+                </fieldset>
+            <p>Descripcion</p>
+            <p>
+                <input type="text" name="txtDescripcion" placeholder="Descripcion" autocomplete="off">
+            </p>
+            <p>Precio</p>
+            <p>
+                <input type="number" name="txtPrecio" placeholder="Precio" min="1000" max="9000000000" value="000">
+            </p>
+            <p>Cantidad de baños</p>
+            <p>
+                <input type="number" name="txtWc" placeholder="Baños" min="1" max="20" value="1">
+            </p>
+            <p>Cantidad de Autos</p>
+            <p>
+                <input type="number" name="txtAutos" placeholder="Autos" max="20" value="1">
+            </p>
+            <p>Cantidad de Dormitorios</p>
+            <p>
+                <input type="number" name="txtDormitorios" placeholder="Dormitorios" max="30" value="1">
+            </p>
+            </fieldset>
+            <p>
+                <input type="submit" name="GuardarForm" value="Guardar"/>
+            </p>
+        </section>
+        <section class="seccion-tabla">
+            <h2>Listado de Anuncios</h2>
+            <fieldset>
+                <input type="submit" name="GuardarTabla" value="Guardar"/>
+                <input type="button" name="Eliminar" value="Eliminar Anuncio"/>
+                <input type="button" name="Cancelar" value="Cancelar"/>
+                <input type="hidden" name="txtId"/>
+            </fieldset>
+            <div id="tabla"></div>
+        </section>
+    </main>
+</body>
+</html>
