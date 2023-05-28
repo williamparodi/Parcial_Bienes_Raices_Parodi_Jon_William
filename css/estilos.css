@@ -22,7 +22,16 @@ th{
 {
     background-color: #ddd;
 }
+.botones,.alta
+{
+    /*font-family:'Work Sans', sans-serif;*/
+}
 
+@font-face 
+{
+    font-family: 'Anton';
+    src: url(./fonts/Anton-Regular.ttf); 
+}
 header
 {
     display: flex;
@@ -34,12 +43,15 @@ header
 {
     flex-direction: column;
     align-items: center;
+    font-family: 'Anton';
+
 }
+
 
 .ventana-modal
 {
     display: flex;
-    
+    background-image: url('/imagenes/error.png');
 }
 
 .seccion-tabla
@@ -47,4 +59,9 @@ header
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.spinner
+{
+    display: none;
 }

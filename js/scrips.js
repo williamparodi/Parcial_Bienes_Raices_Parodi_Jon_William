@@ -1,7 +1,7 @@
 import { Casa } from "../js/casa.js";
 import { actualizarTabla} from "../js/tabla.js";
 import { anuncios as casas } from "../data/lista.js";
-
+import { validarForm } from "../js/validaciones.js";
 
 localStorage.setItem("anuncios",JSON.stringify(casas));
 
@@ -26,8 +26,7 @@ window.addEventListener("click",(e) =>
     {
         const id = e.target.parentElement.dataset.id;
         console.log(id);
-        const $boton = document.querySelector("input[name='GuardarForm']");
-        $boton.value = "Modificar";
+        activaBotones();
         const anuncioSelecionado = anuncios.find((anuncio)=>anuncio.id == id);
         cargarFormAnuncios($formulario,anuncioSelecionado);
     }
@@ -36,7 +35,17 @@ window.addEventListener("click",(e) =>
         console.log("Eliminar");
         const id = parseInt($formulario.txtId.value);
         handlerDelete(id);
+        $formulario.txtId.value = "";
+        resetBotones(); 
     }
+    else if(e.target.matches("input[value='Cancelar"))
+    {
+        console.log("Cancelado");
+        $formulario.reset();
+        $formulario.txtId.value = "";
+        resetBotones(); 
+    }
+    
 });
 
 
@@ -44,37 +53,14 @@ $formulario.addEventListener("submit",(e)=>
 {
     e.preventDefault();
     console.log("Enviando")//aca va el spiner
-    //anuncioController($formulario); 
-    if(validarForm($formulario))
-    {
-        const {txtId,txtTitulo,rdoTransaccion,txtDescripcion,txtPrecio,txtWc,txtAutos,txtDormitorios} = $formulario;
-        
-        if(txtId.value === "")
-        {
-            console.log("nueva..")//otro spinner
-            const nuevaCasa = new Casa(0,txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
-            parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
-            handlerCreate(nuevaCasa);
-        }
-        else
-        {
-            console.log("update");
-            const casaModificada = new Casa(parseInt(txtId.value),txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
-            parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
-            handlerUpdate(casaModificada);
-        }
-        $formulario.reset();
-    }
-    else
-    {
-        alert("Error en el formulario");
-    }
+    anuncioController($formulario);
 });
+
 
 
 function handlerCreate(nuevoAnuncio)
 {
-    if(!nuevoAnuncio != null)
+    if(nuevoAnuncio != null)
     {
         anuncios.push(nuevoAnuncio);
         actualizarStorage("anuncios",anuncios);
@@ -118,83 +104,53 @@ function cargarFormAnuncios(formulario, casa)
   formulario.txtDormitorios.value = casa.cantidadDormitorios;
 }
 
-function validarNumeros(numero)
-{
-    let retorno = false;
-    if(!isNaN(numero))
-    {
-        retorno = true
-    }
-    else
-    {
-        alert("Solo numeros validos");
-    }
-    return retorno;
-}
-
-function validarLetras(palabras)
-{
-    let retorno = false;
-    if(palabras.length > 0 && palabras.length < 10000)
-    {
-        retorno = true
-    }
-    else
-    {
-        alert("Se paso con la cantidad de palabras");
-    }
-    return retorno;
-}
-
-function validarForm(formulario)
-{
-    let retorno = false;
-
-    if(validarNumeros(formulario.txtWc.value) && validarNumeros(formulario.txtPrecio.value) 
-        && validarNumeros(formulario.txtAutos.value) 
-        && validarNumeros(formulario.txtDormitorios.value)
-        && validarLetras(formulario.txtTitulo.value)
-        && validarLetras(formulario.txtDescripcion.value)
-        && validarLetras(formulario.rdoTransaccion.value))
-    {
-        retorno = true;
-    }
-    else
-    {
-        alert("Datos Incorrectos");
-    }
-
-    return retorno;
-}
-/*
 function anuncioController()
 {
     if(validarForm($formulario))
     {
-        const {txtId,txtTitulo,rdoTransaccion,txtDescripcion,txtPrecio,txtWc,txtAutos,txtDormitorios,} = $formulario;
+        const {txtId,txtTitulo,rdoTransaccion,txtDescripcion,txtPrecio,txtWc,txtAutos,txtDormitorios} = $formulario;
         
         if(txtId.value === "")
         {
             console.log("nueva..")//otro spinner
-            const nuevoAnuncio = new Anuncio(0,txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
+            const nuevaCasa = new Casa(0,txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
-            
-            handlerCreate(nuevoAnuncio);
+            handlerCreate(nuevaCasa);
         }
         else
         {
-            console.log("update");
-            const anuncioModificado = new Anuncio(parseInt(txtId.value),txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
+            console.log("update");//otro spinner
+            const casaModificada = new Casa(parseInt(txtId.value),txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
-            /*
-            const anuncioModificado = new Anuncio(parseInt(txtId.value),txtTitulo.value,parseInt(txtWc.value),parseInt(txtAutos.value),
-            parseInt(txtDormitorios.value),txtDescripcion.value,rdoTransaccion.value,parseFloat(txtPrecio.value));
-            handlerUpdate(anuncioModificado);
+            handlerUpdate(casaModificada);
+            resetBotones();
         }
         $formulario.reset();
+        $formulario.txtId.value = "";
     }
     else
     {
         alert("Error en el formulario");
     }
+}
+/*
+function resetValoresForm()
+{
+    $formulario.reset();
+    $formulario.txtId.value = "";
 }*/
+function activaBotones()
+{
+    const $botonModficar = document.querySelector("input[name='GuardarForm']");
+    const $botonEliminar = document.querySelector("input[name='Eliminar']");
+    $botonEliminar.type = "button"; 
+    $botonModficar.value = "Modificar";
+}
+
+function resetBotones()
+{
+    const $botonModficar = document.querySelector("input[name='GuardarForm']");
+    const $botonEliminar = document.querySelector("input[name='Eliminar']");
+    $botonEliminar.type = "hidden"; 
+    $botonModficar.value = "Guardar";
+}

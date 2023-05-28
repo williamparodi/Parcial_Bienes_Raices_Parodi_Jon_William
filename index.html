@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estilos.css">
-    <script src="./js/scrips.js" type="module"></script>
+    <script src="./js/scrips.js" type="module"></script>    
     <title>Bienes Raices</title>
 </head>
 <body>
@@ -49,12 +49,12 @@
                     <p>
                         <input type="number" name="txtDormitorios" placeholder="Dormitorios" value="1" required/>
                     </p>
-                    <p>
-                        <input type="submit" name="GuardarForm" value="Guardar"/>
-                        <input type="button" name="Eliminar" value="Eliminar Anuncio"/>
-                        <input type="button" name="Cancelar" value="Cancelar"/>
+                    <div class="botones">
+                        <input id="alta" type="submit" name="GuardarForm" value="Guardar"/>
+                        <input id="elimina" type="hidden" name="Eliminar" value="Eliminar Anuncio"/>
+                        <input id="cancela" type="button" name="Cancelar" value="Cancelar"/>
                         <input type="hidden" name="txtId"/>
-                    </p>
+                    </div>
                 </fieldset>
             </form>
         </section>
