@@ -5,26 +5,22 @@ export const crearTabla=(data)=>
     const $tabla = document.createElement("table");
     $tabla.appendChild(crearCabecera(data[0]));
     $tabla.appendChild(crearCuerpo(data));
-
     return $tabla;
 }
 
 const crearCabecera=(data)=>
 {
-    const $thead = createElement("thead");
+    const $thead = document.createElement("thead");
     const $tr = document.createElement("tr");
+    $tr.style.setProperty("background-color","violet");
 
-    if(!Array.isArray(data))return null;
-    const $datoCabecera = Object.keys(data[0]);
-    $datoCabecera.forEach((elemento)=>
+    for (const key in data) 
     {
-        if(elemento != "id")
-        {
-            const $th = document.createElement("th");
-            $th.textContent = elemento;
-            $tr.appendChild($th);
-        }
-    });
+      if (key === "id") continue;
+      const $th = document.createElement("th");
+      $th.textContent = key;
+      $tr.appendChild($th);
+    }
 
     $thead.appendChild($tr);
     
@@ -40,19 +36,21 @@ const crearCuerpo = (data)=>
     data.forEach((elemento)=>
     {
         const $tr = document.createElement("tr");
-        elemento.forEach((valor)=>
+        for (const key in elemento) 
         {
-            if(elemento != "id")
+            if (key === "id") 
+            {
+                $tr.dataset.id = elemento[key];
+            } 
+            else 
             {
                 const $td = document.createElement("td");
-                $td.textContent = elemento[valor];
+                $td.textContent = elemento[key];
                 $tr.appendChild($td);
             }
-            else
-            {
-                $tr.dataset.id = elemento[valor];
-            }
-        });
+         
+        }
+        
         $tbody.appendChild($tr);
     });
 

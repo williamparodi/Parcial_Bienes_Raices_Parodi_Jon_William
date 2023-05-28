@@ -1,0 +1,50 @@
+table
+{
+    width: 80%;
+    border-collapse: collapse;
+    margin: 0 auto; /*centrado*/
+}
+
+th,td{
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+
+td{
+    text-align: right;/*se coorren a la derecha*/
+}
+
+th{
+    text-transform: capitalize;/*la inical en mayuscula*/
+}
+
+.rowPar
+{
+    background-color: #ddd;
+}
+
+header
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario 
+{
+    flex-direction: column;
+    align-items: center;
+}
+
+.ventana-modal
+{
+    display: flex;
+    
+}
+
+.seccion-tabla
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
