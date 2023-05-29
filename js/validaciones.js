@@ -66,3 +66,4 @@ function mostarVentanaError(mensaje)
         $modal.close();
     });
 }
+

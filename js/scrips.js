@@ -20,6 +20,11 @@ function actualizarStorage(clave,data)
     localStorage.setItem(clave,JSON.stringify(data));
 }
 
+window.addEventListener("load",()=>
+{
+    muestraModalSpinner("Cargando datos....");
+});
+
 window.addEventListener("click",(e) =>
 {
     if(e.target.matches("td"))
@@ -34,6 +39,7 @@ window.addEventListener("click",(e) =>
     {
         console.log("Eliminar");
         const id = parseInt($formulario.txtId.value);
+        muestraModalSpinner("Eliminando aviso");
         handlerDelete(id);
         $formulario.txtId.value = "";
         resetBotones(); 
@@ -52,7 +58,6 @@ window.addEventListener("click",(e) =>
 $formulario.addEventListener("submit",(e)=>
 {
     e.preventDefault();
-    console.log("Enviando")//aca va el spiner
     anuncioController($formulario);
 });
 
@@ -115,6 +120,7 @@ function anuncioController(formulario)
             console.log("nueva..")//otro spinner
             const nuevaCasa = new Casa(0,txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
+            muestraModalSpinner("Ingresando nuevo aviso");
             handlerCreate(nuevaCasa);
         }
         else
@@ -122,6 +128,7 @@ function anuncioController(formulario)
             console.log("update");//otro spinner
             const casaModificada = new Casa(parseInt(txtId.value),txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
+            muestraModalSpinner("Modificando aviso");
             handlerUpdate(casaModificada);
             resetBotones();
         }
@@ -146,12 +153,20 @@ function resetBotones()
     $botonModficar.value = "Guardar";
 }
 
-function muestraModalSpinner(accion)
+function muestraModalSpinner(mensaje)
 {
+    const $modal = document.getElementById("carga-spinner");
+    const $mensaje = document.getElementById("mensaje");
+
+    $mensaje.textContent = mensaje;
+    
+    $modal.showModal();
     setTimeout(function()
     {
-        
-        alert("Hola mundo!!");
+        $modal.close();
     },5000);
+    
 }
+  
+
 
