@@ -12,7 +12,7 @@ const crearCabecera=(data)=>
 {
     const $thead = document.createElement("thead");
     const $tr = document.createElement("tr");
-    $tr.style.setProperty("background-color","violet");
+    $tr.style.setProperty("background-color","rgb(134, 150, 254)");
 
     for (const key in data) 
     {

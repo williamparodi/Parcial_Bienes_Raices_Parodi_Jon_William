@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estilos.css">
-    <script src="./js/scrips.js" type="module"></script>    
+    <script src="./js/scrips.js" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
     <title>Bienes Raices</title>
 </head>
 <body>
@@ -22,11 +26,12 @@
                         <p>Titulo:</p>
                         <input type="text" name="txtTitulo" placeholder="Título" autocomplete="off" required/>
                     </p>
-                    <fieldset>
-                        <legend>Transacción</legend>
-                        <input type="radio" name="rdoTransaccion" value="VENTA" checked/>Venta
-                        <br>
-                        <input type="radio" name="rdoTransaccion" value="ALQUILER"/>Alquiler
+                    <fieldset id="transaccion">
+                        <legend>Transacción:</legend>
+                        <p>Venta</p>
+                        <input type="radio" name="rdoTransaccion" value="VENTA" checked/>
+                        <p>Alquiler</p>
+                        <input type="radio" name="rdoTransaccion" value="ALQUILER"/>
                         <br>
                     </fieldset>
                     <p>Descripcion</p>
@@ -49,10 +54,18 @@
                     <p>
                         <input type="number" name="txtDormitorios" placeholder="Dormitorios" value="1" required/>
                     </p>
+                    <div id="ventana">
+                        <dialog id="modal">
+                            <p>Error</p>
+                            <img src="./imagenes/error.png">
+                            <p id="mensaje-error"></p>
+                            <input id="cerrar" type="button" name="cerrar" value="cerrar"></button>
+                        </dialog>
+                    </div>
                     <div class="botones">
                         <input id="alta" type="submit" name="GuardarForm" value="Guardar"/>
-                        <input id="elimina" type="hidden" name="Eliminar" value="Eliminar Anuncio"/>
-                        <input id="cancela" type="button" name="Cancelar" value="Cancelar"/>
+                        <input id="eliminar" type="hidden" name="Eliminar" value="Eliminar Anuncio"/>
+                        <input id="cancelar" type="button" name="Cancelar" value="Cancelar"/>
                         <input type="hidden" name="txtId"/>
                     </div>
                 </fieldset>
@@ -62,6 +75,11 @@
             <h2>Listado de Anuncios</h2>
             <div id="tabla"></div>
         </section>
+        <div class="spinner">
+            <div class="carga-spinner">
+                <i class="fa-solid fa-arrows-spin fa-spin fa-2xl"></i>
+            </div>
+        </div>
     </main>
 </body>
 </html>

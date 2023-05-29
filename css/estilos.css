@@ -1,57 +1,104 @@
+*
+{
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box; 
+}
 table
 {
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
     margin: 0 auto; /*centrado*/
 }
 
-th,td{
+th,td
+{
     border: 1px solid black;
     padding: 5px 10px;
+    text-align: center;    
 }
 
-td{
-    text-align: right;/*se coorren a la derecha*/
-}
-
-th{
-    text-transform: capitalize;/*la inical en mayuscula*/
+th
+{
+    text-transform: capitalize;
 }
 
 .rowPar
 {
     background-color: #ddd;
 }
-.botones,.alta
+.botones
 {
-    /*font-family:'Work Sans', sans-serif;*/
+    
+}
+#alta,#cancelar,#eliminar
+{
+    border-style: hidden;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    border-radius: 10%;
+}
+#alta
+{
+    background-color: aquamarine;
+}
+#cancelar
+{
+    background-color: cornflowerblue;
+}
+#eliminar
+{
+    background-color: crimson;
+}
+.botones:hover
+{
+    transition: background-color 5s;
 }
 
 @font-face 
 {
-    font-family: 'Anton';
-    src: url(./fonts/Anton-Regular.ttf); 
+    font-family:'Bebas Neue';
+    src: url(./fonts/BebasNeue-Regular.ttf); 
 }
+
 header
 {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.formulario 
-{
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Anton';
 
 }
-
-
-.ventana-modal
+h1,h2
 {
+    background-color: cadetblue;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-family: sans-serif;
+}
+.formulario
+{
+    
+    justify-content: center;
+    font-family:'Bebas Neue';
+    margin: 0 auto;
+}
+
+p
+{
+    font-family: 'Bebas Neue';
+}
+
+#modal
+{
+    position: fixed;
+    margin: auto;
+}
+#cerrar
+{
+    background-color: gray;
     display: flex;
-    background-image: url('/imagenes/error.png');
+    align-items:flex-end;
+    font-size: 20px;
 }
 
 .seccion-tabla
@@ -63,5 +110,32 @@ header
 
 .spinner
 {
+    height: 100%;
+    width: 100%;
+    font-size: 50px;
     display: none;
+}
+.carga-spinner
+{
+    border: 15px solid #ccc;
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#transaccion
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (max-wight:500px)
+{
+   
 }

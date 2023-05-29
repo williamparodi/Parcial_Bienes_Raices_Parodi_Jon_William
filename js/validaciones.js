@@ -7,7 +7,7 @@ export function validarNumeros(numero)
     }
     else
     {
-        alert("Solo numeros validos");
+        mostarVentanaError("Solo numeros validos");
     }
     return retorno;
 }
@@ -15,13 +15,13 @@ export function validarNumeros(numero)
 export function validarLetras(palabras)
 {
     let retorno = false;
-    if(palabras.length > 0 && palabras.length < 100)
+    if(palabras.length > 0 && palabras.length < 50)
     {
         retorno = true
     }
     else
     {
-        alert("Se paso con la cantidad de palabras");
+        mostarVentanaError("Se paso con la cantidad de palabras");
     }
     return retorno;
 }
@@ -41,8 +41,28 @@ export function validarForm(formulario)
     }
     else
     {
-        alert("Datos Incorrectos");
+        mostarVentanaError("Error en el formulario");   
     }
 
     return retorno;
+}
+
+function mostarVentanaError(mensaje)
+{
+    const $modal = document.getElementById("modal");
+    const $mensajeError = document.getElementById("mensaje-error");
+    const $cerrarBtn = document.getElementById("cerrar");
+    if($modal.open)
+    {
+        $modal.close();
+    }
+
+    $mensajeError.textContent = mensaje;
+
+    $modal.showModal();
+
+    $cerrarBtn.addEventListener("click",()=>
+    {    
+        $modal.close();
+    });
 }

@@ -104,11 +104,11 @@ function cargarFormAnuncios(formulario, casa)
   formulario.txtDormitorios.value = casa.cantidadDormitorios;
 }
 
-function anuncioController()
+function anuncioController(formulario)
 {
-    if(validarForm($formulario))
+    if(validarForm(formulario))
     {
-        const {txtId,txtTitulo,rdoTransaccion,txtDescripcion,txtPrecio,txtWc,txtAutos,txtDormitorios} = $formulario;
+        const {txtId,txtTitulo,rdoTransaccion,txtDescripcion,txtPrecio,txtWc,txtAutos,txtDormitorios} = formulario;
         
         if(txtId.value === "")
         {
@@ -125,20 +125,11 @@ function anuncioController()
             handlerUpdate(casaModificada);
             resetBotones();
         }
-        $formulario.reset();
-        $formulario.txtId.value = "";
-    }
-    else
-    {
-        alert("Error en el formulario");
+        formulario.reset();
+        formulario.txtId.value = "";
     }
 }
-/*
-function resetValoresForm()
-{
-    $formulario.reset();
-    $formulario.txtId.value = "";
-}*/
+
 function activaBotones()
 {
     const $botonModficar = document.querySelector("input[name='GuardarForm']");
@@ -154,3 +145,13 @@ function resetBotones()
     $botonEliminar.type = "hidden"; 
     $botonModficar.value = "Guardar";
 }
+
+function muestraModalSpinner(accion)
+{
+    setTimeout(function()
+    {
+        
+        alert("Hola mundo!!");
+    },5000);
+}
+
