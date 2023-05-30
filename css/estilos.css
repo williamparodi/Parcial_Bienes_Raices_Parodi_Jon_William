@@ -189,13 +189,43 @@ p
     margin-top: 30px;
 }
 
+@media screen and (max-width: 910px)
+{
+    .seccion-tabla
+    {
+        font-size: small;
+    }
+    #tabla
+    {
+        width: 100px;
+        position: relative;
+        right: 45%;
+        padding: 10px;
+    }
+}
+
 @media screen and (max-width: 800px)
 {
-    
-    main,.seccion-tabla
+    .seccion-tabla
     {
-        display: flex;
-        flex-direction: column;
+        font-size: small;
+        height: 5%;
+        width: 5%;
+    }
+    h2
+    {
+        position: relative;
+        left: 300px;
+    }
+ 
+}
+
+@media screen and (max-width: 600px)
+{
+    .seccion-tabla
+    {
+        font-size: small;
     }
 
 }
+
