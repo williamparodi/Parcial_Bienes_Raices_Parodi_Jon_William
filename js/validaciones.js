@@ -48,7 +48,6 @@ export function mostrarVentanaModal(mensaje,nombreElemento)
     const $modal = document.getElementById("modal");
     const $mensaje = document.getElementById(nombreElemento);
     const $cerrarBtn = document.getElementById("cerrar");
-
     if($modal.open)
     {
         $modal.close();
@@ -64,26 +63,6 @@ export function mostrarVentanaModal(mensaje,nombreElemento)
     });
 }
 
-export function mostrarVentanaCancelar(mensaje,nombreElemento)
-{
-    const $modal = document.getElementById("modal-eliminar");
-    const $mensaje = document.getElementById(nombreElemento);
-    const $btnCancelar = document.getElementById("cancelar-eliminar");
 
-    if($modal.open)
-    {
-        $modal.close();
-    }
-
-    $mensaje.textContent = mensaje;
-
-    $modal.showModal();
-
-    $btnCancelar.addEventListener("click",()=>
-    {    
-        $modal.close();
-        return null;
-    });
-}
 
 

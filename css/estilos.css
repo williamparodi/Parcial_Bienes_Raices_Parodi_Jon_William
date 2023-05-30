@@ -77,7 +77,6 @@ th
     text-transform: capitalize;
 }
 
-
 .rowPar
 {
     background-color: #ddd;
@@ -138,19 +137,22 @@ p
 {
     position: fixed;
     margin: auto;
+    padding: 30px;
     border-radius: 2%;
     background-color: rgb(157, 178, 191);
     border: 5px solid #ccc;
 }
 
-#cerrar,#cancelar-eliminar
+#cerrar,#cancelar-eliminar,#aceptar-eliminar
 {
+    /*position: relative;
+    left: 80px;*/
     position: relative;
-    left: 140px;
+    left: 10px;
     border-style: hidden;
     background-color:rgb(227, 244, 244);
     font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Bebas Neue',sans-serif;
     text-transform: capitalize;
 }
 

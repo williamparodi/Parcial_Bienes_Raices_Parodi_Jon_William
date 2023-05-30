@@ -1,14 +1,13 @@
 import { Casa } from "../js/casa.js";
 import { actualizarTabla} from "../js/tabla.js";
 import { anuncios as casas } from "../data/lista.js";
-import { validarForm ,mostrarVentanaCancelar} from "../js/validaciones.js";
+import { validarForm } from "../js/validaciones.js";
 
 localStorage.setItem("anuncios",JSON.stringify(casas));
 
 const anuncios = JSON.parse(localStorage.getItem("anuncios")) || [];
 const $seccionTabla = document.getElementById("tabla");
 const $formulario = document.forms[0];
-
 
 if(anuncios.length)
 {
@@ -37,15 +36,7 @@ window.addEventListener("click",(e) =>
     }
     else if(e.target.matches("input[value='Eliminar Anuncio']"))
     {
-        console.log("Eliminar");
-        if(mostrarVentanaCancelar("Se va a borrar el anuncio,desea continuar?","mensaje-eliminar") != null)
-        {
-            const id = parseInt($formulario.txtId.value);
-            muestraModalSpinner("Eliminando aviso");
-            handlerDelete(id);
-        }
-        $formulario.txtId.value = "";
-        resetBotones(); 
+        eliminarCancelarController("Desea eliminar el aviso?","mensaje-eliminar",$formulario);   
     }
     else if(e.target.matches("input[value='Cancelar"))
     {
@@ -57,14 +48,11 @@ window.addEventListener("click",(e) =>
     
 });
 
-
 $formulario.addEventListener("submit",(e)=>
 {
     e.preventDefault();
     anuncioController($formulario);
 });
-
-
 
 function handlerCreate(nuevoAnuncio)
 {
@@ -123,7 +111,7 @@ function anuncioController(formulario)
             console.log("nueva..");
             const nuevaCasa = new Casa(0,txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
-            muestraModalSpinner("Ingresando nuevo aviso");
+            muestraModalSpinner("Ingresando nuevo anuncio");
             handlerCreate(nuevaCasa);
         }
         else
@@ -131,7 +119,7 @@ function anuncioController(formulario)
             console.log("update");
             const casaModificada = new Casa(parseInt(txtId.value),txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
-            muestraModalSpinner("Modificando aviso");
+            muestraModalSpinner("Modificando anuncio");
             handlerUpdate(casaModificada);
             resetBotones();
         }
@@ -170,6 +158,38 @@ function muestraModalSpinner(mensaje)
     },5000);
     
 }
-  
+
+function eliminarCancelarController(mensaje,nombreElemento,formulario)
+{
+    const $modal = document.getElementById("modal-eliminar");
+    const $mensaje = document.getElementById(nombreElemento);
+    const $btnCancelar = document.getElementById("cancelar-eliminar");
+    const $btnAceptar = document.getElementById("aceptar-eliminar");
+
+    if($modal.open)
+    {
+        $modal.close();
+    }
+
+    $mensaje.textContent = mensaje;
+
+    $modal.showModal();
+
+    $btnCancelar.addEventListener("click",()=>
+    {    
+        $modal.close();
+        return null;
+    });
+
+    $btnAceptar.addEventListener("click",()=>
+    {
+        $modal.close();
+        const id = parseInt(formulario.txtId.value);
+        muestraModalSpinner("Eliminando aviso");
+        handlerDelete(id);
+        formulario.txtId.value = "";
+        resetBotones(); 
+    });
+}
 
 
