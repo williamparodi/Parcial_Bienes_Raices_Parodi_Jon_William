@@ -24,19 +24,21 @@
                     <legend>Datos del anuncio</legend>
                     <p>
                         <p>Titulo:</p>
-                        <input type="text" name="txtTitulo" placeholder="Título" autocomplete="off" required/>
+                        <input id="titulo" type="text" name="txtTitulo" placeholder="Título" autocomplete="off" required/>
                     </p>
                     <fieldset id="transaccion">
                         <legend>Transacción:</legend>
                         <p>Venta</p>
+                        <img id="icono-sale" src="./imagenes/for-sale-icon.svg" alt="">
                         <input type="radio" name="rdoTransaccion" value="VENTA" checked/>
                         <p>Alquiler</p>
+                        <img id="icono-rent" src="./imagenes/for-rent-icon.svg" alt="">
                         <input type="radio" name="rdoTransaccion" value="ALQUILER"/>
                         <br>
                     </fieldset>
                     <p>Descripcion</p>
                     <p>
-                        <input type="text" name="txtDescripcion" placeholder="Descripcion" autocomplete="off" required/>
+                        <input id="descripcion" type="text" name="txtDescripcion" placeholder="Descripcion" autocomplete="off" required/>
                     </p>
                     <p>Precio</p>
                     <p>

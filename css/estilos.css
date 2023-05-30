@@ -4,6 +4,54 @@
     padding: 5px;
     box-sizing: border-box; 
 }
+
+header
+{
+    background: url(../imagenes/anuncioHeader2.jpg);
+    background-position: top;
+    background-attachment: contain;
+    background-size: cover;
+}
+
+#titulo
+{
+    width: 50%;
+}
+
+#transaccion
+{
+    display: flex;
+    justify-content: flex-start;
+    width: 30%;
+}
+
+#icono-sale,#icono-rent
+{
+    height: 80px;
+    width: 80px;
+}
+
+#descripcion
+{
+    width: 80%;
+    height: 100px;
+}
+
+h1,h2
+{
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-family: sans-serif;
+    color: rgb(39, 55, 77);
+    display: flex;
+    justify-content: center;
+}
+
+h1:hover,h2:hover
+{
+    color: #a7a7a7;
+}
+
 table
 {
     width: 100%;
@@ -27,10 +75,7 @@ th
 {
     background-color: #ddd;
 }
-.botones
-{
-    
-}
+
 #alta,#cancelar,#eliminar
 {
     border-style: hidden;
@@ -39,14 +84,17 @@ th
     border-radius: 10%;
     color: #ccc;
 }
-#alta,#cancelar,#eliminar:hover
+
+#alta:hover,#cancelar:hover,#eliminar:hover
 {
     background-color: #8c0404;
 }
+
 #alta
 {
     background-color: rgb(39, 55, 77);
 }
+
 #cancelar
 {
     background-color: rgb(157, 178, 191);
@@ -56,41 +104,28 @@ th
 {
     background-color: rgb(241, 90, 89);
 }
-.botones:hover
-{
-}
 
 @font-face 
 {
-    font-family:'Bebas Neue';
-    src: url(./fonts/BebasNeue-Regular.ttf); 
+    font-family: 'Bebas Neue', sans-serif;
+    src: url(../fonts/BebasNeue-Regular.ttf); 
 }
 
-header
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-h1,h2
-{
-    background-color: cadetblue;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-family: sans-serif;
-}
 .formulario
 {
     
-    justify-content: center;
-    font-family:'Bebas Neue';
+    font-family:'Bebas Neue',sans-serif;
     margin: 0 auto;
+}
+
+form
+{
+    background: #F7F7F7;
 }
 
 p
 {
-    font-family: 'Bebas Neue';
+    font-family:'Bebas Neue',sans-serif;
 }
 
 #modal
@@ -98,6 +133,7 @@ p
     position: fixed;
     margin: auto;
 }
+
 #cerrar
 {
     background-color: gray;
@@ -121,15 +157,16 @@ p
     border: 5px solid #ccc;
     height: 25%;
     width: 25%;
-    /*background-color: #ccc;*/
     background-color: rgb(157, 178, 191);
 }
+
 #mensaje
 {
     font-size: 20px;
     display: flex;
     align-self: center;
 }
+
 #circulo
 {
     padding: 10%;
@@ -137,14 +174,14 @@ p
     justify-content: center;
     margin-top: 30px;
 }
-#transaccion
-{
-    display: flex;
-    flex-direction: column;
-}
 
-
-@media screen and (max-wight:500px)
+@media screen and (max-width: 800px)
 {
-   
+    
+    main,.seccion-tabla
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
 }

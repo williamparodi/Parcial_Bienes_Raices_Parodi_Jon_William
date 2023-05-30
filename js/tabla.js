@@ -3,6 +3,7 @@ export const crearTabla=(data)=>
     if(!Array.isArray(data))return null;
 
     const $tabla = document.createElement("table");
+    $tabla.style.setProperty("background-color","rgb(216, 227, 231)");
     $tabla.appendChild(crearCabecera(data[0]));
     $tabla.appendChild(crearCuerpo(data));
     return $tabla;
@@ -12,8 +13,9 @@ const crearCabecera=(data)=>
 {
     const $thead = document.createElement("thead");
     const $tr = document.createElement("tr");
-    $tr.style.setProperty("background-color","rgb(134, 150, 254)");
-
+    $tr.style.setProperty("background-color","rgb(157, 178, 191)");
+    $tr.style.setProperty("font-size","25");
+    $tr.style.setProperty("font-family","cursive");
     for (const key in data) 
     {
       if (key === "id") continue;
@@ -45,6 +47,7 @@ const crearCuerpo = (data)=>
             else 
             {
                 const $td = document.createElement("td");
+                $td.style.setProperty("font-family","cursive");
                 $td.textContent = elemento[key];
                 $tr.appendChild($td);
             }

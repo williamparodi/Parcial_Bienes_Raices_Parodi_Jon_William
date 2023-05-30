@@ -117,7 +117,7 @@ function anuncioController(formulario)
         
         if(txtId.value === "")
         {
-            console.log("nueva..")//otro spinner
+            console.log("nueva..");
             const nuevaCasa = new Casa(0,txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
             muestraModalSpinner("Ingresando nuevo aviso");
@@ -125,7 +125,7 @@ function anuncioController(formulario)
         }
         else
         {
-            console.log("update");//otro spinner
+            console.log("update");
             const casaModificada = new Casa(parseInt(txtId.value),txtTitulo.value,rdoTransaccion.value,txtDescripcion.value,parseFloat(txtPrecio.value),
             parseInt(txtWc.value),parseInt(txtAutos.value),parseInt(txtDormitorios.value));
             muestraModalSpinner("Modificando aviso");
