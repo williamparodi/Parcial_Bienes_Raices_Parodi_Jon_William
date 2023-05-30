@@ -1,7 +1,7 @@
 import { Casa } from "../js/casa.js";
 import { actualizarTabla} from "../js/tabla.js";
 import { anuncios as casas } from "../data/lista.js";
-import { validarForm } from "../js/validaciones.js";
+import { validarForm ,mostrarVentanaCancelar} from "../js/validaciones.js";
 
 localStorage.setItem("anuncios",JSON.stringify(casas));
 
@@ -38,9 +38,12 @@ window.addEventListener("click",(e) =>
     else if(e.target.matches("input[value='Eliminar Anuncio']"))
     {
         console.log("Eliminar");
-        const id = parseInt($formulario.txtId.value);
-        muestraModalSpinner("Eliminando aviso");
-        handlerDelete(id);
+        if(mostrarVentanaCancelar("Se va a borrar el anuncio,desea continuar?","mensaje-eliminar") != null)
+        {
+            const id = parseInt($formulario.txtId.value);
+            muestraModalSpinner("Eliminando aviso");
+            handlerDelete(id);
+        }
         $formulario.txtId.value = "";
         resetBotones(); 
     }

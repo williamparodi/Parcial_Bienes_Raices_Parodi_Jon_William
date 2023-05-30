@@ -59,13 +59,19 @@
                     <div id="ventana">
                         <dialog id="modal">
                             <p>Error</p>
-                            <img src="./imagenes/error.png">
+                            <img src="./imagenes/circle-exclamation-solid.svg">
                             <p id="mensaje-error"></p>
                             <input id="cerrar" type="button" name="cerrar" value="cerrar"></button>
                         </dialog>
                     </div>
                     <div class="botones">
                         <input id="alta" type="submit" name="GuardarForm" value="Guardar"/>
+                        <dialog id="modal-eliminar">
+                            <p>Eliminar</p>
+                            <img src="./imagenes/trash-solid.svg">
+                            <p id="mensaje-eliminar"></p>
+                            <input id="cancelar-eliminar" type="button" name="cancelar" value="cancelar"></button>
+                        </dialog>
                         <input id="eliminar" type="hidden" name="Eliminar" value="Eliminar Anuncio"/>
                         <input id="cancelar" type="button" name="Cancelar" value="Cancelar"/>
                         <input type="hidden" name="txtId"/>

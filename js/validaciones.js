@@ -7,7 +7,7 @@ export function validarNumeros(numero)
     }
     else
     {
-        mostarVentanaError("Solo numeros validos");
+        mostrarVentanaModal("Solo numeros validos","mensaje-error");
     }
     return retorno;
 }
@@ -21,7 +21,7 @@ export function validarLetras(palabras)
     }
     else
     {
-        mostarVentanaError("Se paso con la cantidad de palabras");
+        mostrarVentanaModal("Se paso con la cantidad de palabras","mensaje-error");
     }
     return retorno;
 }
@@ -39,25 +39,22 @@ export function validarForm(formulario)
     {
         retorno = true;
     }
-    else
-    {
-        mostarVentanaError("Error en el formulario");   
-    }
 
     return retorno;
 }
 
-function mostarVentanaError(mensaje)
+export function mostrarVentanaModal(mensaje,nombreElemento)
 {
     const $modal = document.getElementById("modal");
-    const $mensajeError = document.getElementById("mensaje-error");
+    const $mensaje = document.getElementById(nombreElemento);
     const $cerrarBtn = document.getElementById("cerrar");
+
     if($modal.open)
     {
         $modal.close();
     }
 
-    $mensajeError.textContent = mensaje;
+    $mensaje.textContent = mensaje;
 
     $modal.showModal();
 
@@ -66,4 +63,27 @@ function mostarVentanaError(mensaje)
         $modal.close();
     });
 }
+
+export function mostrarVentanaCancelar(mensaje,nombreElemento)
+{
+    const $modal = document.getElementById("modal-eliminar");
+    const $mensaje = document.getElementById(nombreElemento);
+    const $btnCancelar = document.getElementById("cancelar-eliminar");
+
+    if($modal.open)
+    {
+        $modal.close();
+    }
+
+    $mensaje.textContent = mensaje;
+
+    $modal.showModal();
+
+    $btnCancelar.addEventListener("click",()=>
+    {    
+        $modal.close();
+        return null;
+    });
+}
+
 

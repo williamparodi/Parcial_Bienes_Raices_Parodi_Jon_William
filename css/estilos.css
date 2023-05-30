@@ -34,7 +34,7 @@ header
 #descripcion
 {
     width: 80%;
-    height: 100px;
+    height: 40px;
 }
 
 h1,h2
@@ -56,20 +56,27 @@ table
 {
     width: 100%;
     border-collapse: collapse;
-    margin: 0 auto; /*centrado*/
+    margin: 0 auto;
 }
 
 th,td
 {
     border: 1px solid black;
     padding: 5px 10px;
-    text-align: center;    
+    text-align: center; 
+}
+
+td:hover
+{
+    transition: background-color .5s;   
+    background-color: rgb(101, 100, 124);
 }
 
 th
 {
     text-transform: capitalize;
 }
+
 
 .rowPar
 {
@@ -81,7 +88,7 @@ th
     border-style: hidden;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
-    border-radius: 10%;
+    border-radius: 5%;
     color: #ccc;
 }
 
@@ -113,7 +120,6 @@ th
 
 .formulario
 {
-    
     font-family:'Bebas Neue',sans-serif;
     margin: 0 auto;
 }
@@ -128,18 +134,24 @@ p
     font-family:'Bebas Neue',sans-serif;
 }
 
-#modal
+#modal,#modal-eliminar
 {
     position: fixed;
     margin: auto;
+    border-radius: 2%;
+    background-color: rgb(157, 178, 191);
+    border: 5px solid #ccc;
 }
 
-#cerrar
+#cerrar,#cancelar-eliminar
 {
-    background-color: gray;
-    display: flex;
-    align-items:flex-end;
+    position: relative;
+    left: 140px;
+    border-style: hidden;
+    background-color:rgb(227, 244, 244);
     font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: capitalize;
 }
 
 .seccion-tabla
